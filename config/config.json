@@ -1,0 +1,12 @@
+{
+  "deviceIP": "10.10.112.1",
+  "username": "admin",
+  "password": "D@config!1",
+  "networkConfigs": {
+    "Modems": {
+      "Modem1": "Cellular 1",
+      "Modem2": "Cellular 2"
+    },
+    "bands": ["band1", "band2", "band3"]
+  }
+}
