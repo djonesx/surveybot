@@ -34,24 +34,50 @@ const puppeteer = require('puppeteer');
         // Introduce a delay to ensure the modal has fully rendered
         await delay(3000);
 
-        // Directly trigger the click event on the "Cancel" button
-        const clickResult = await page.evaluate(() => {
+        // Directly invoke the "Save and Apply" function handlers
+        const triggerSave = await page.evaluate(async () => {
             const button = Array.from(document.querySelectorAll('div.ui-dialog-buttonpane button.ui-button.ui-corner-all.ui-widget'))
-                .find(btn => btn.textContent.trim() === 'Cancel');
+                .find(btn => btn.textContent.trim() === 'Save and Apply');
             if (button) {
-                button.click();
-                return true;
+                const me = $(button);
+
+                console.log('Button found, checking validation...');
+                try {
+                    const validateResult = me.triggerHandler("validate");
+                    console.log('Validation result:', validateResult);
+
+                    if (validateResult) {
+                        console.log('Validation passed.');
+                        const info = me.triggerHandler("export", [false]);
+                        console.log('Export info:', info);
+
+                        if (info === false) {
+                            console.log('Export failed.');
+                            return 'Export failed';
+                        }
+
+                        await me.triggerHandler("warning", [info]).done(function () {
+                            this[0].triggerHandler("save", [this[1]]);
+                            console.log('Save triggered.');
+                        }.bind([me, info]));
+                        
+                        return 'Save triggered';
+                    } else {
+                        console.log('Validation failed.');
+                        return 'Validation failed';
+                    }
+                } catch (e) {
+                    console.log('Error during validation:', e);
+                    return 'Validation error';
+                }
             }
-            return false;
+            console.log('Button not found');
+            return 'Button not found';
         });
 
-        if (clickResult) {
-            console.log('Cancel button clicked programmatically.');
-        } else {
-            console.error('Cancel button not found.');
-        }
+        console.log(`Trigger Save Result: ${triggerSave}`);
 
-        // Wait for any post-cancel actions to complete
+        // Wait for any post-save actions to complete
         await delay(3000);
 
     } catch (error) {
