@@ -24,7 +24,7 @@ async function checkSIMEnabled(page, modem) {
   const page = await browser.newPage();
 
   // Modify this URL to the correct one
-  await page.goto('http://your-router-login-page-url');
+//  await page.goto('http://your-router-login-page-url');
 
   // Perform login if necessary
   // await login(page); // Assuming you have a login function

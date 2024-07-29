@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const { deviceIP, username, password } = require('./config/config.json');
 const login = require('./scripts/login');
 const openCellSettings = require('./scripts/openCellSettings');
-const checkSIMEnabled = require('./checkSIMEnabled');
+//const checkSIMEnabled = require('./checkSIMEnabled');
 //const clickClearBands = require('./scripts/clickClearBands');
 //const clickSaveAndApply = require('./scripts/clickSaveAndApply');
 
