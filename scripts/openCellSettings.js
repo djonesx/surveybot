@@ -1,8 +1,16 @@
-const { networkConfigs: { Modems } } = require('../config/config.json');
+const { networkConfigs } = require('../config/config.json');
 
 async function openCellSettings(page, modem) {
   try {
-    const cellularLinkText = Modems[modem];
+    console.log(`Opening settings for: ${modem}`);
+    const cellularLinkText = networkConfigs.Modems[modem];
+    console.log(`Cellular link text: ${cellularLinkText}`);
+    
+    if (!cellularLinkText) {
+      console.error(`No cellular link text found for modem: ${modem}`);
+      return;
+    }
+    
     await page.waitForSelector('.wan_status.conn_name.details_action', { timeout: 10000 });
 
     const cellularLinkExists = await page.evaluate((cellularLinkText) => {

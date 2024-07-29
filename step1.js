@@ -31,7 +31,7 @@ const fs = require('fs');
 
   // Navigate to Cellular 1 settings
   await Promise.all([
-    page.click('a[data-popup-tips*="[107] Cell 1"]')
+    page.click('a[data-popup-tips*="Cellular 1"]')
   ]);
   
   function delay(ms) {
