@@ -1,6 +1,6 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-
+//const puppeteer = require('puppeteer');
+//const fs = require('fs');
+console.log("Running checkSIMEnabled.js");
 async function checkSIMEnabled(page, modem) {
   const result = {};
 
@@ -20,11 +20,10 @@ async function checkSIMEnabled(page, modem) {
 }
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: false });
-  const page = await browser.newPage();
+//  const browser = await puppeteer.launch({ headless: false });
+//  const page = await browser.newPage();
 
-  // Modify this URL to the correct one
-//  await page.goto('http://your-router-login-page-url');
+//  await page.goto(process.env.ROUTER_LOGIN_URL);
 
   // Perform login if necessary
   // await login(page); // Assuming you have a login function

@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const { deviceIP, username, password } = require('./config/config.json');
 const login = require('./scripts/login');
 const openCellSettings = require('./scripts/openCellSettings');
-//const checkSIMEnabled = require('./checkSIMEnabled');
+//const checkSIMEnabled = require('./scripts/checkSIMEnabled');
 //const clickClearBands = require('./scripts/clickClearBands');
 //const clickSaveAndApply = require('./scripts/clickSaveAndApply');
 
@@ -25,9 +25,9 @@ const openCellSettings = require('./scripts/openCellSettings');
     console.log("Opening cell settings for Modem1...");
     await openCellSettings(page, 'Modem1');
 
-    console.log("Checking and writing SIM checkboxes...");
-    const simStatus = await checkSIMEnabled(page);
-    fs.writeFileSync('config/cellularStatus.json', JSON.stringify(simStatus, null, 2));
+//    console.log("Checking and writing SIM checkboxes...");
+//    const simStatus = await checkSIMEnabled(page);
+//    fs.writeFileSync('config/cellularStatus.json', JSON.stringify(simStatus, null, 2));
 
 //    console.log("Clicking 'Clear' button...");
 //    await clickClearBands(page);
