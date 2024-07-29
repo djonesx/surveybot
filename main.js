@@ -2,8 +2,9 @@ const puppeteer = require('puppeteer');
 const { deviceIP, username, password } = require('./config/config.json');
 const login = require('./scripts/login');
 const openCellSettings = require('./scripts/openCellSettings');
-const clickClearBands = require('./scripts/clickClearBands');
-const clickSaveAndApply = require('./scripts/clickSaveAndApply');
+const checkSIMEnabled = require('./checkSIMEnabled');
+//const clickClearBands = require('./scripts/clickClearBands');
+//const clickSaveAndApply = require('./scripts/clickSaveAndApply');
 
 (async () => {
   try {
@@ -24,11 +25,15 @@ const clickSaveAndApply = require('./scripts/clickSaveAndApply');
     console.log("Opening cell settings for Modem1...");
     await openCellSettings(page, 'Modem1');
 
-    console.log("Clicking 'Clear' button...");
-    await clickClearBands(page);
+    console.log("Checking and writing SIM checkboxes...");
+    const simStatus = await checkSIMEnabled(page);
+    fs.writeFileSync('config/cellularStatus.json', JSON.stringify(simStatus, null, 2));
 
-    console.log("Clicking 'Save and Apply' button...");
-    await clickSaveAndApply(page);
+//    console.log("Clicking 'Clear' button...");
+//    await clickClearBands(page);
+
+//    console.log("Clicking 'Save and Apply' button...");
+//    await clickSaveAndApply(page);
 
     // Do not close the browser
     console.log("Script completed. Browser window remains open for further inspection.");
