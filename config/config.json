@@ -1,5 +1,5 @@
 {
-  "deviceIP": "10.10.112.1",
+  "deviceIP": "192.168.10.254",
   "username": "admin",
   "password": "D@config!1",
   "networkConfigs": {
