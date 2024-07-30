@@ -1,6 +1,6 @@
 //const puppeteer = require('puppeteer');
 //const fs = require('fs');
-console.log("Running checkSIMEnabled.js");
+
 async function checkSIMEnabled(page, modem) {
   const result = {};
 
