@@ -4,7 +4,9 @@ const login = require('./scripts/login');
 const openCellSettings = require('./scripts/openCellSettings');
 //const checkSIMEnabled = require('./scripts/checkSIMEnabled');
 //const clickClearBands = require('./scripts/clickClearBands');
-//const clickSaveAndApply = require('./scripts/clickSaveAndApply');
+const clickSaveAndApply = require('./scripts/clickSaveAndApply');
+const speedtest = require('./scripts/speedtest');
+
 
 (async () => {
   try {
@@ -32,8 +34,12 @@ const openCellSettings = require('./scripts/openCellSettings');
 //    console.log("Clicking 'Clear' button...");
 //    await clickClearBands(page);
 
-//    console.log("Clicking 'Save and Apply' button...");
-//    await clickSaveAndApply(page);
+    console.log("Clicking 'Save and Apply' button...");
+    await clickSaveAndApply(page);
+
+    module.exports = async function speedtest(page) {
+        // Your speedtest function implementation
+    };
 
     // Do not close the browser
     console.log("Script completed. Browser window remains open for further inspection.");

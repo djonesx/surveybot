@@ -40,6 +40,10 @@ function iperfUp(serverIp, port, callback) {
 const serverIp = 'iperf3.digav.net';
 const port = '5201';
 
+module.exports = async function speedtest(page) {
+    // Your speedtest function implementation
+};
+
 iperfDown(serverIp, port, (err, speed) => {
     if (err) {
         console.error(`Error parsing iperf3 output: ${err}`);

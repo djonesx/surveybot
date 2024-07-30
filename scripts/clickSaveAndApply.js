@@ -12,7 +12,7 @@ function delay(time) {
       });
   
       // Add a short wait to ensure everything is loaded
-      await delay(100); // Wait for 0.1 seconds
+      await delay(1000); // Wait for seconds
   
       // Wait for the button to appear and click it
       await page.waitForSelector('[aria-labelledby="ui-id-12"] .ui-dialog-buttonpane button', { visible: true, timeout: 10000 });
